@@ -23,14 +23,14 @@
     text-transform: capitalize;
   }
 
-  ul {
+  .characters {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     grid-gap: 20px;
     overflow-y: visible;
   }
 
-  li {
+  .card {
     list-style: none;
     padding: 20px 30px;
     background-color: #1c1c1c;

@@ -14,4 +14,5 @@ export interface Result {
   id: number;
   name: string;
   created: string;
+  image: string;
 }

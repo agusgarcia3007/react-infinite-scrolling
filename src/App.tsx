@@ -1,4 +1,5 @@
 import InfiniteScroll from "react-infinite-scroll-component";
+import Card from "./components/Card";
 import { useGetCharacters } from "./hooks/useGetCharacters";
 
 const App = () => {
@@ -16,15 +17,18 @@ const App = () => {
         hasMore={!!hasNextPage}
         loader={<p>Loading...</p>}
       >
-        <ul>
+        <div className="characters">
           {characters &&
             characters.results.map((character) => (
-              <li key={character.id}>
-                <p>{character.name}</p>
-                <time>{new Date(character.created).toDateString()}</time>
-              </li>
+              <Card
+                key={character.id}
+                created={character.created}
+                id={character.id}
+                name={character.name}
+                image={character.image}
+              />
             ))}
-        </ul>
+        </div>
       </InfiniteScroll>
     </main>
   );
