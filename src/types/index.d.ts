@@ -10,9 +10,17 @@ export interface Info {
   prev: string;
 }
 
+type Location = {
+  name: string;
+  url: string;
+};
+
 export interface Result {
   id: number;
   name: string;
   created: string;
   image: string;
+  status: string;
+  species: string;
+  location: Location;
 }
