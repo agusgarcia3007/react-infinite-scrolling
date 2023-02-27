@@ -17,7 +17,7 @@ const App = () => {
     <>
       <main className="w-screen min-h-screen bg-darkBackground text-light p-6 flex flex-col justify-center">
         <h1 className="text-center w-full  py-7 text-3xl md:text-5xl">
-          Infinite Scroll
+          Rick and Morty Infinite Scroll
         </h1>
         <InfiniteScroll
           dataLength={characters ? characters.results.length : 0}
