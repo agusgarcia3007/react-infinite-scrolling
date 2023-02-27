@@ -25,7 +25,7 @@ const App = () => {
           hasMore={!!hasNextPage}
           loader={<Loader />}
         >
-          <div className="w-full gap-2 sm:gap-6  grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 ">
+          <div className="w-full gap-2 sm:gap-6 overflow-x-hidden  grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 ">
             {characters?.results.map((character) => (
               <Card
                 key={character.id}
