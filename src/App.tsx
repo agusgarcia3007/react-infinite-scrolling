@@ -15,7 +15,7 @@ const App = () => {
 
   return (
     <>
-      <main className="w-screen min-h-screen bg-darkBackground text-light p-6 flex flex-col justify-center">
+      <main className="w-screen min-h-screen bg-darkBackground text-light p-3 sm:p-6 flex flex-col justify-center">
         <h1 className="text-center w-full  py-7 text-3xl md:text-5xl">
           Rick and Morty Infinite Scroll
         </h1>
