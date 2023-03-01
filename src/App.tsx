@@ -1,24 +1,20 @@
 import { lazy } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
-import { Footer, Loader } from "./components";
-const Card = lazy(() => import("./components/Card"));
+import { Loader, Title } from "./components";
 import { useGetCharacters } from "./hooks/useGetCharacters";
-import { useGetInfo } from "./hooks/useGetInfo";
+import Container from "./layouts/Container";
+const Card = lazy(() => import("./components/Card"));
 
 const App = () => {
   const { characters, error, fetchNextPage, hasNextPage, status } =
     useGetCharacters();
 
-  const { locations, episodes } = useGetInfo();
-
   if (status === "error") return <h4>Ups!, {`${error}` as string}</h4>;
 
   return (
     <>
-      <main className="w-screen min-h-screen bg-darkBackground text-light p-3 sm:p-6 flex flex-col justify-center">
-        <h1 className="text-center w-full  py-7 text-3xl md:text-5xl">
-          Rick and Morty Infinite Scroll
-        </h1>
+      <Container>
+        <Title label="Rick and Morty Infinite Scroll" />
         <InfiniteScroll
           dataLength={characters ? characters.results.length : 0}
           next={() => fetchNextPage()}
@@ -40,13 +36,7 @@ const App = () => {
             ))}
           </div>
         </InfiniteScroll>
-      </main>
-      <Footer
-        characters={characters?.info?.count!}
-        episodes={episodes.info.count}
-        locations={locations.info.count}
-        serverStatus={characters && episodes && locations}
-      />
+      </Container>
     </>
   );
 };

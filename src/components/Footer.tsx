@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Dot from "./Dot";
 
 type FooterProps = {
@@ -24,19 +25,19 @@ const Footer = ({
           <ul className="flex flex-wrap justify-center gap-6 md:gap-8 lg:gap-12">
             <li>
               <p className="text-gray-700 transition dark:text-white dark:hover:text-white/75">
-                Characters: {characters}
+                <Link to="/">Characters: {characters}</Link>
               </p>
             </li>
 
             <li>
               <p className="text-gray-700 transition dark:text-white dark:hover:text-white/75">
-                Episodes: {episodes}
+                <Link to="/episodes"> Episodes: {episodes}</Link>
               </p>
             </li>
 
             <li>
               <p className="text-gray-700 transition dark:text-white dark:hover:text-white/75">
-                Locations: {locations}
+                <Link to="/locations"> Locations: {locations}</Link>
               </p>
             </li>
           </ul>

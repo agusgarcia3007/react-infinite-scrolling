@@ -1,6 +1,6 @@
 export interface ResponseAPI {
   info: Info;
-  results: Result[];
+  results: Result[] | EpisodeResult[];
 }
 
 export interface Info {
@@ -19,8 +19,12 @@ export interface Result {
   id: number;
   name: string;
   created: string;
-  image: string;
-  status: string;
-  species: string;
-  location: Location;
+  image?: string;
+  status?: string;
+  species?: string;
+  location?: Location;
+  air_date?: string;
+  characters?: string[];
+  episode?: string;
+  url?: string;
 }
