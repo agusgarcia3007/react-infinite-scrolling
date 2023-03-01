@@ -1,10 +1,10 @@
 import React, { Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { Loader } from "./components";
-import "./styles/index.css";
-import Router from "./Routes";
 import { BrowserRouter } from "react-router-dom";
+import { Loader } from "./components";
+import Router from "./Routes";
+import "./styles/index.css";
 
 const client = new QueryClient({
   defaultOptions: {

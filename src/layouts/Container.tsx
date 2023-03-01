@@ -17,8 +17,8 @@ const Container = ({ children }: ContainerProps) => {
       </main>
       <Footer
         characters={characters?.info?.count!}
-        episodes={episodes?.info.count!}
-        locations={locations.info.count}
+        episodes={episodes?.info?.count!}
+        locations={locations.info?.count}
         serverStatus={characters && episodes && locations}
       />
     </>

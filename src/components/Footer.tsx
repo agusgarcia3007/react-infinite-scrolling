@@ -1,4 +1,5 @@
-import { Link } from "react-router-dom";
+import { useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 import Dot from "./Dot";
 
 type FooterProps = {
@@ -14,6 +15,12 @@ const Footer = ({
   locations,
   serverStatus,
 }: FooterProps) => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [pathname]);
+
   return (
     <footer aria-label="Site Footer" className="bg-[#1f1f1f]">
       <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6 lg:px-8">

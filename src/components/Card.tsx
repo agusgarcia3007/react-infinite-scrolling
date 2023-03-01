@@ -1,3 +1,5 @@
+import clsx from "clsx";
+import { useNavigate } from "react-router-dom";
 import type { Result } from "../types";
 import { getStatus } from "../utils/getStatus";
 import { parseStringLength } from "../utils/parseStringLength";
@@ -16,6 +18,7 @@ const Card = ({
   episode,
   url,
 }: Result) => {
+  const navigate = useNavigate();
   const characterProps = { image, status, species, location };
   const episodeProps = { air_date, characters, episode, url, id };
 
@@ -53,7 +56,13 @@ const Card = ({
 
   if (!someKeyIsEmpty(episodeProps))
     return (
-      <div className={cardBasicClassNames}>
+      <div
+        className={clsx([
+          cardBasicClassNames,
+          "cursor-pointer hover:bg-opacity-80",
+        ])}
+        onClick={() => navigate(`/episodes/${id}`)}
+      >
         {/* <section className="h-48 w-48 border border-white"></section> */}
         <div className="flex flex-col w-full sm:w-auto justify-between p-4 leading-normal">
           <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900  dark:text-white">

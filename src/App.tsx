@@ -14,7 +14,7 @@ const App = () => {
   return (
     <>
       <Container>
-        <Title label="Rick and Morty Infinite Scroll" />
+        <Title label="Rick and Morty characters" />
         <InfiniteScroll
           dataLength={characters ? characters.results.length : 0}
           next={() => fetchNextPage()}
