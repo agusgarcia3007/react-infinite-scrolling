@@ -1,6 +1,7 @@
 import { Footer } from "../components";
 import { useGetCharacters } from "../hooks/useGetCharacters";
-import { useGetInfo } from "../hooks/useGetInfo";
+import { useGetEpisodes } from "../hooks/useGetEpisodes";
+import { useGetLocations } from "../hooks/useGetLocations";
 
 type ContainerProps = {
   children: React.ReactNode;
@@ -8,7 +9,8 @@ type ContainerProps = {
 
 const Container = ({ children }: ContainerProps) => {
   const { characters } = useGetCharacters();
-  const { locations, episodes } = useGetInfo();
+  const { episodes } = useGetEpisodes();
+  const { locations } = useGetLocations();
 
   return (
     <>
@@ -18,8 +20,8 @@ const Container = ({ children }: ContainerProps) => {
       <Footer
         characters={characters?.info?.count!}
         episodes={episodes?.info?.count!}
-        locations={locations.info?.count}
-        serverStatus={characters && episodes && locations}
+        locations={locations?.info?.count!}
+        serverStatus={characters && episodes && locations ? true : false}
       />
     </>
   );

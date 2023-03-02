@@ -1,23 +1,12 @@
 import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
 import { useMemo } from "react";
 import { ResponseAPI } from "../types";
+import { fetcher } from "../utils/fetcher";
 
-const fetcher = (endpoint: string) =>
-  fetch(`${import.meta.env.VITE_BASE_URL}/${endpoint}`).then((res) =>
-    res.json()
-  );
-
-export const useGetInfo = () => {
-  const lcoationsQuery = useQuery(["locations"], () => fetcher("location"));
-
-  const episodesFetcher = ({ pageParam }: { pageParam: number }) =>
-    fetch(`${import.meta.env.VITE_BASE_URL}/episode?page=${pageParam}`).then(
-      (res) => res.json()
-    );
-
+export const useGetEpisodes = () => {
   const { data, error, fetchNextPage, status, hasNextPage } = useInfiniteQuery(
     ["episodes"],
-    ({ pageParam = 1 }) => episodesFetcher({ pageParam }),
+    ({ pageParam = 1 }) => fetcher(pageParam, "episode"),
     {
       getNextPageParam: (lastPage: ResponseAPI) => {
         const previousPage = lastPage.info.prev
@@ -42,10 +31,7 @@ export const useGetInfo = () => {
     [data]
   );
 
-  const locations = lcoationsQuery.data;
-
   return {
-    locations,
     episodes,
     status,
     hasNextPage,

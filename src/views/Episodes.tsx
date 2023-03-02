@@ -1,10 +1,11 @@
 import InfiniteScroll from "react-infinite-scroll-component";
 import { Card, Loader, Title } from "../components";
-import { useGetInfo } from "../hooks/useGetInfo";
+import { useGetEpisodes } from "../hooks/useGetEpisodes";
 import Container from "../layouts/Container";
 
 const Episodes = () => {
-  const { episodes, fetchNextPage, error, status, hasNextPage } = useGetInfo();
+  const { episodes, fetchNextPage, error, status, hasNextPage } =
+    useGetEpisodes();
 
   if (status === "error") return <h4>Ups!, {`${error}` as string}</h4>;
 

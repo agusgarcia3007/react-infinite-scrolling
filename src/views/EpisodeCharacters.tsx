@@ -10,27 +10,33 @@ const EpisodeCharacters = () => {
   const [characterList, setCharacterList] = useState<Result[]>([]);
   const navigate = useNavigate();
   const episodeId = pathname.split("/")[2];
+  const route = pathname.includes("episodes") ? "episode" : "location";
 
   const fetcher = () =>
-    fetch(`${import.meta.env.VITE_BASE_URL}/episode/${episodeId}`).then((res) =>
-      res.json()
+    fetch(`${import.meta.env.VITE_BASE_URL}/${route}/${episodeId}`).then(
+      (res) => res.json()
     );
 
   const { data } = useQuery([episodeId], fetcher);
 
-  const { episode, characters } = data;
+  const { episode, characters, residents, name } = data;
 
   const getCharacterList = async () => {
-    const characterPromises = characters.map((character: string) => {
-      return fetch(character).then((res) => res.json());
-    });
-
-    const results = await Promise.all(characterPromises);
+    const results = await Promise.all(
+      characters
+        ? characters
+        : residents.map(async (character: string) => {
+            const response = await fetch(character);
+            return response.json();
+          })
+    );
 
     setCharacterList(results);
 
     return results;
   };
+
+  console.log(data);
 
   useEffect(() => {
     getCharacterList();
@@ -52,9 +58,9 @@ const EpisodeCharacters = () => {
           <path d="M8.293 2.293a1 1 0 0 1 1.414 0l4.5 4.5a1 1 0 0 1 0 1.414l-4.5 4.5a1 1 0 0 1-1.414-1.414L11 8.5H1.5a1 1 0 0 1 0-2H11L8.293 3.707a1 1 0 0 1 0-1.414Z" />
         </svg>
       </button>
-      <Title label={`${episode} Episode Characters`} />
+      <Title label={`${episode || name} Characters`} />
       <p className="w-full text-center mb-3 text-gray-400">
-        {characters.length} characters
+        {characters?.length || residents?.length} characters
       </p>
       <div className="w-full gap-2 sm:gap-6 overflow-x-hidden  grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 ">
         {characterList?.map((character) => (

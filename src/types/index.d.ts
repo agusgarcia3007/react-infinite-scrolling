@@ -1,6 +1,6 @@
 export interface ResponseAPI {
   info: Info;
-  results: Result[] | EpisodeResult[];
+  results: Result[];
 }
 
 export interface Info {
@@ -27,4 +27,7 @@ export interface Result {
   characters?: string[];
   episode?: string;
   url?: string;
+  dimension?: string;
+  residents?: string[];
+  type?: string;
 }

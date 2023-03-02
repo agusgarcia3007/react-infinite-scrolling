@@ -27,6 +27,10 @@ const Router = () => {
       path: "/locations",
       element: <Locations />,
     },
+    {
+      path: "/locations/:id",
+      element: <EpisodeCharacters />,
+    },
   ];
 
   return useRoutes(routes);

@@ -17,10 +17,14 @@ const Card = ({
   characters,
   episode,
   url,
+  dimension,
+  residents,
+  type,
 }: Result) => {
   const navigate = useNavigate();
   const characterProps = { image, status, species, location };
   const episodeProps = { air_date, characters, episode, url, id };
+  const locationProps = { dimension, residents, type, id };
 
   const cardBasicClassNames =
     "flex sm:flex-col items-cente rounded-lg  shadow-lg md:flex-row mx-2 bg-[#1f1f1f]";
@@ -63,7 +67,6 @@ const Card = ({
         ])}
         onClick={() => navigate(`/episodes/${id}`)}
       >
-        {/* <section className="h-48 w-48 border border-white"></section> */}
         <div className="flex flex-col w-full sm:w-auto justify-between p-4 leading-normal">
           <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900  dark:text-white">
             {id}. {name}{" "}
@@ -78,7 +81,34 @@ const Card = ({
       </div>
     );
 
-  return <div className={cardBasicClassNames}></div>;
+  if (!someKeyIsEmpty(locationProps)) {
+    return (
+      <div
+        className={clsx([
+          cardBasicClassNames,
+          "cursor-pointer hover:bg-opacity-80",
+        ])}
+        onClick={() => navigate(`/locations/${id}`)}
+      >
+        <div className="flex flex-col w-full sm:w-auto justify-between p-4 leading-normal">
+          <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900  dark:text-white">
+            {id}. {name}{" "}
+            <span className="mx-0.5 text-base text-gray-400 lg:mx-3">
+              {type}
+            </span>
+          </h5>
+          <span className="flex text-gray-400 items-center">
+            <p className="capitalize">dimension: {dimension}</p>
+          </span>
+        </div>
+      </div>
+    );
+  }
+  return (
+    <div className={clsx([cardBasicClassNames, "items-center justify-center"])}>
+      Unknown entry
+    </div>
+  );
 };
 
 export default Card;
