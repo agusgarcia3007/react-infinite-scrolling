@@ -62,7 +62,7 @@ const Header = () => {
                     to={path}
                     className={clsx([
                       "block px-4 py-2 text-light dark:hover:text-gray-400",
-                      { "text-green-400 sm:text-light sm:border-b": isActive },
+                      { "text-green-400 md:text-light md:border-b": isActive },
                     ])}
                   >
                     {text}

@@ -45,7 +45,7 @@ const EpisodeCharacters = () => {
   return (
     <Container>
       <button
-        className="text-white rotate-180 absolute top-4"
+        className="text-white rotate-180 absolute top-20 sm:top-8"
         onClick={() => navigate(-1)}
       >
         <svg
