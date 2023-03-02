@@ -1,4 +1,4 @@
-import { Footer } from "../components";
+import { Footer, Header } from "../components";
 import { useGetCharacters } from "../hooks/useGetCharacters";
 import { useGetEpisodes } from "../hooks/useGetEpisodes";
 import { useGetLocations } from "../hooks/useGetLocations";
@@ -14,6 +14,7 @@ const Container = ({ children }: ContainerProps) => {
 
   return (
     <>
+      <Header />
       <main className="w-screen min-h-screen bg-darkBackground text-light p-3 sm:p-6 flex flex-col justify-center">
         {children}
       </main>

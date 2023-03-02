@@ -31,3 +31,8 @@ export interface Result {
   residents?: string[];
   type?: string;
 }
+
+export interface navLink {
+  text: string;
+  path: string;
+}
