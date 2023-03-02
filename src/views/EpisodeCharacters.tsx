@@ -1,14 +1,15 @@
 import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Card, Title } from "../components";
 import Container from "../layouts/Container";
 import { Result } from "../types";
 
 const EpisodeCharacters = () => {
   const { pathname } = useLocation();
-  const episodeId = pathname.split("/")[2];
   const [characterList, setCharacterList] = useState<Result[]>([]);
+  const navigate = useNavigate();
+  const episodeId = pathname.split("/")[2];
 
   const fetcher = () =>
     fetch(`${import.meta.env.VITE_BASE_URL}/episode/${episodeId}`).then((res) =>
@@ -37,6 +38,20 @@ const EpisodeCharacters = () => {
 
   return (
     <Container>
+      <button
+        className="text-white rotate-180 absolute top-4"
+        onClick={() => navigate(-1)}
+      >
+        <svg
+          width="30"
+          height="30"
+          fill="currentColor"
+          viewBox="0 0 15 15"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path d="M8.293 2.293a1 1 0 0 1 1.414 0l4.5 4.5a1 1 0 0 1 0 1.414l-4.5 4.5a1 1 0 0 1-1.414-1.414L11 8.5H1.5a1 1 0 0 1 0-2H11L8.293 3.707a1 1 0 0 1 0-1.414Z" />
+        </svg>
+      </button>
       <Title label={`${episode} Episode Characters`} />
       <p className="w-full text-center mb-3 text-gray-400">
         {characters.length} characters
