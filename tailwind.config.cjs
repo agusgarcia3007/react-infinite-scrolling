@@ -7,6 +7,9 @@ module.exports = {
         darkBackground: "#2b2b2b",
         light: "#f8f9fa",
       },
+      animation: {
+        "spin-slow": "spin 3s linear infinite",
+      },
     },
   },
   plugins: [],

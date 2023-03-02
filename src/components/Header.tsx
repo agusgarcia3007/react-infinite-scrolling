@@ -19,7 +19,7 @@ const Header = () => {
           <img
             src={logo}
             draggable={false}
-            className="h-6 mx-3 sm:h-9 animate-spin"
+            className="h-6 mx-3 sm:h-9 animate-spin-slow"
             alt="portal Logo"
           />
           <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">
