@@ -23,20 +23,16 @@ const EpisodeCharacters = () => {
 
   const getCharacterList = async () => {
     const results = await Promise.all(
-      characters
-        ? characters
-        : residents.map(async (character: string) => {
-            const response = await fetch(character);
-            return response.json();
-          })
+      (characters ? characters : residents).map(async (character: string) => {
+        const response = await fetch(character);
+        return response.json();
+      })
     );
 
     setCharacterList(results);
 
     return results;
   };
-
-  console.log(data);
 
   useEffect(() => {
     getCharacterList();
